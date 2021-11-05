@@ -7,10 +7,15 @@ export const postsFetched = (data) => ({
     payload: data 
 })
 
+export const removePost = (data) => ({
+  type: "POSTS/remove",
+  payload: data 
+})
+
 export const fetchNext5Posts = async (dispatch, getState) => {
   const offset = getState().posts.posts.length 
-  const response = await axios.get(`${API_URL}/posts?offset=${offset}&limit=5`)
-  // console.log("response", response.data.rows)
+  const response = await axios.get(`${API_URL}/posts?offset=${offset}&limit=2`)
+  console.log("response", response)
   const morePosts = response.data.rows
   dispatch(postsFetched(morePosts))
 }

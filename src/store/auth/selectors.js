@@ -1,0 +1,1 @@
+export const selectMe = (reduxState) => reduxState.auth.me

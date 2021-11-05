@@ -1,0 +1,5 @@
+Battleplan:
+- get a token
+    - POST API/login with email and password
+- Store the token in our redux Store
+- Use this token to make request to endpoints that are protected

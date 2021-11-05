@@ -1,5 +1,5 @@
 import React from "react";
-import { fetchNext5Posts } from "../store/postsFeed/actions";
+import { fetchNext5Posts, postsFetched, removePost } from "../store/postsFeed/actions";
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { selectPosts } from "../store/postsFeed/selectors";
@@ -25,9 +25,15 @@ export default function Homepage() {
   return (
     <div>
       <h1>Posts</h1>
-      {!posts ? "loading" : posts.map(post => <div key={post.id}> 
-       <h4> {post.title}</h4>
-      </div>)}
+      { !posts ? "No posts" : posts.map((post, i) => {
+      return <div key={i}>
+        <p>{post.title}</p>
+        {/* <button onClick={() => dispatch(removePost(i))}>x</button> */}
+        </div>})}
+
+      {/* {!posts ? "loading" : posts.map(post => <div key={post.id}>  */}
+       {/* <h4> {post.title}</h4> */}
+      {/* </div>)} */}
       <button onClick={() => dispatch(fetchNext5Posts)}>More posts</button>
     </div>
   )
